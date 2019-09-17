@@ -121,7 +121,7 @@
 </ul>
 <h4>MicroPython</h4>
 <p>組み込み用に軽量化された Python</p>
-<p><a href="https://qiita.com/inachi/items/c668a03a03cf04b04f16">参考</a></p>
+<p><a href="https://qiita.com/inachi/items/c668a03a03cf04b04f16">参考:MicroPython と CPython の違い</a></p>
 <h3>Pythonで始めてみよう関数型プログラミング</h3>
 <h4>関数型プログラミング</h4>
 <p>複数の式を関数の適用によって組み合わせていくプログラミングスタイル。</p>
@@ -233,9 +233,51 @@ pvector(2 * x for x in range(3))
 <h4>Maybeモナド</h4>
 <p><a href="https://qiita.com/oyenakaw/items/63728d42ac8f716c8d08">PythonでMaybeモナドを書いてみる</a></p>
 <h3>Python Website is Slow? Think Again!</h3>
-<h4></h4>
+<h4>なぜ遅いと思われているのか</h4>
+<ul>
+<li>
+<p>インタプリタ言語</p>
+</li>
+<li>
+<p>GILを使っている</p>
+</li>
+</ul>
+<h4>どう改善していくか</h4>
+<ol>
+<li>DB へのアクセス回数を調査する</li>
+</ol>
+<p>I/O Bounds なのが多いので、これを減らす。</p>
+<ol>
+<li>asincio を使用する</li>
+</ol>
+<p>非同期で動作させる。</p>
+<ol>
+<li>Cache, serverless, Use python3 etc...</li>
+</ol>
+<h4>Python2 -&gt; Python3</h4>
+<p>レスポンスタイム、CPU使用率共に改善し、安定する。</p>
+<h4>まとめ</h4>
+<p>大体のボトルネックは、I/O Bounds だが、もし CPU Bounds だった場合にほか言語を検討すると良い。</p>
 <h3>入門 自作検索エンジン</h3>
-<h4></h4>
+<p><a href="https://speakerdeck.com/ryook/the-first-step-self-made-full-text-search">発表資料</a></p>
+<h4>全文検索の種類</h4>
+<ul>
+<li>
+<p>Grep型
+  線形走査する。</p>
+</li>
+<li>
+<p>牽引（インデックス）型
+  あらかじめ検索対象となる文章群を走査して牽引データを作っておく。</p>
+</li>
+<li>
+<p>ベクトル型
+  特徴ベクトルを使ってベクトル間の距離を計算。</p>
+</li>
+</ul>
+<h4>検索処理の流れ</h4>
+<p><img alt="インデクシング処理" src="img_pyconjp2019day2/2.png"></p>
+<p><img alt="検索処理" src="img_pyconjp2019day2/3.png"></p>
 <h3>Getting Started with Asynchronous Python Web Development</h3>
 <h4></h4>
       </div>
