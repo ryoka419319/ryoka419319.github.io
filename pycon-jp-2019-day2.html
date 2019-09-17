@@ -144,19 +144,25 @@
 <h4>関数合成</h4>
 <p>２つ以上の関数を合成して、１つの関数として提供する。</p>
 <p>Python では、<a href="https://github.com/kachayev/fn.py">fn.py</a> を使用する。</p>
-<p><code>$ pip3 install fn.py</code></p>
-<p>```
-  from fn import F, _
-  from operator import add, mul</p>
-<p># F(f, *args) means partial application
-  # same as functools.partial but returns fn.F instance
-  assert F(add, 1)(10) == 11</p>
-<p># F &lt;&lt; F means functions composition,
-  # so (F(f) &lt;&lt; g)(x) == f(g(x))
-  f = F(add, 1) &lt;&lt; F(mul, 100)
-  assert list(map(f, [0, 1, 2])) == [1, 101, 201]
-  assert list(map(F() &lt;&lt; str &lt;&lt; (<em> ** 2) &lt;&lt; (</em> + 1), range(3))) == ["1", "4", "9"]
-  ```</p>
+<div class="highlight"><pre><span></span>$ pip3 install fn.py
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">fn</span> <span class="kn">import</span> <span class="n">F</span><span class="p">,</span> <span class="n">_</span>
+  <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">mul</span>
+
+  <span class="c1"># F(f, *args) means partial application</span>
+  <span class="c1"># same as functools.partial but returns fn.F instance</span>
+  <span class="k">assert</span> <span class="n">F</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">11</span>
+
+  <span class="c1"># F &lt;&lt; F means functions composition,</span>
+  <span class="c1"># so (F(f) &lt;&lt; g)(x) == f(g(x))</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">F</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+  <span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">201</span><span class="p">]</span>
+  <span class="k">assert</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">F</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="nb">str</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">_</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">]</span>
+</pre></div>
+
+
 <h4>永続データ構造</h4>
 <p>list を操作する関数の問題点</p>
 <ul>
