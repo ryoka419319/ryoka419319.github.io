@@ -205,14 +205,17 @@
 <p>構造を持つデータを分解し、構成要素を取り出す。</p>
 <p>構造または分解・取得したデータによって条件分岐を行う。</p>
 <p><a href="https://github.com/santinic/pampy">pampy</a></p>
-<p>```
-  from pampy import match, _</p>
-<p>input = [1, 2, 3]
-  pattern = [1, 2, _]
-  action = lambda x: f"it's {x}"</p>
-<p># pattern にマッチした場合に action が実行される
-  match(input, pattern, action)
-  ```</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pampy</span> <span class="kn">import</span> <span class="n">match</span><span class="p">,</span> <span class="n">_</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+<span class="n">action</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="s2">&quot;it&#39;s {x}&quot;</span>
+
+<span class="c1"># pattern にマッチした場合に action が実行される</span>
+<span class="n">match</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+</pre></div>
+
+
 <h4>モナド（Monad）</h4>
 <p>モナドは、Haskell で標準ライブラリとして提供され広まった。</p>
 <p><img alt="モナドとは型クラス" src="img_pyconjp2019day2/1.png"></p>
