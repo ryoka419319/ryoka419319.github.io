@@ -268,7 +268,26 @@
 <p><img alt="インデクシング処理" src="img_pyconjp2019day2/2.png"></p>
 <p><img alt="検索処理" src="img_pyconjp2019day2/3.png"></p>
 <h3>Getting Started with Asynchronous Python Web Development</h3>
-<h4></h4>
+<h4>aiohttp</h4>
+<p>以下でインストールできます。</p>
+<div class="highlight"><pre><span></span>$ pip install aiohttp
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">web</span>
+<span class="kn">import</span> <span class="nn">asyncpg</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">get_hn_stories</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
+    <span class="n">db_pool</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">app</span><span class="p">[</span><span class="s1">&#39;db_pool&#39;</span><span class="p">]</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">match_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">)</span>
+    <span class="n">async</span> <span class="k">with</span> <span class="n">db_pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM people&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+</pre></div>
+
+
+<p>※ファイルシステム操作は非同期ではないです。</p>
       </div>
       <div class="back-to-top">
           <a href="#top">back to top</a>
